@@ -1,6 +1,6 @@
 import React from 'react';
 
-const UserDashboard = ({data, updateData, handleDelete, setUpdateData}) => {
+const UserDashboard = ({data, updateData, handleUpdate, handleDelete, setUpdateData}) => {
 
 
     return (
@@ -32,6 +32,7 @@ const UserDashboard = ({data, updateData, handleDelete, setUpdateData}) => {
                                         mobile:user.mobile,
                                         zipcode:user.zipcode,
                                         password:user.password,
+                                        id:user.id,
                                         
                                         })}>Edit</button>
                                     <button className="btn btn-danger" onClick={() => handleDelete(user.id)}>Delete</button>
@@ -73,13 +74,10 @@ const UserDashboard = ({data, updateData, handleDelete, setUpdateData}) => {
                             <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                             <input type="password" className="form-control"  value={updateData.password} onChange={(e) => setUpdateData({...updateData, password:e.target.value})}></input>
                         </div>
-                        <button type="submit" className="btn btn-dark" onClick={handleUpdate}>Edit User</button>
+                        <button type="submit" className="btn btn-dark" onClick={() => handleUpdate()}>Edit User</button>
 
                     </div>
-                    <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" className="btn btn-dark">Save changes</button>
-                    </div>
+               
                     </div>
                 </div>
             </div>

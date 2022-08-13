@@ -1,0 +1,16 @@
+{
+  "posts": [
+    {
+      "name": "frrfer",
+      "email": "rge@gmail.com",
+      "mobile": "2439876",
+      "zipcode": "245",
+      "password": "dsgDCYSD",
+      "id": 1
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}

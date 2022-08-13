@@ -34,6 +34,7 @@ const AddUser = () => {
         email:'',
         zipcode:'',
         password:'',
+        id:"",
 
     })
 
@@ -62,7 +63,15 @@ const AddUser = () => {
             getUser();
         };
 
-      
+        const handleUpdate = async() => {
+            await axios
+                .put(`http://localhost:4000/posts/${updateData.id}`, updateData)
+                .then((res) => {
+                    alert("User Information updated");
+                    getUser();
+                });
+        };
+        
 
     return (
         <div className='container'>
@@ -92,7 +101,7 @@ const AddUser = () => {
                     </div>
                     <button type="submit" className="btn btn-dark" onClick={handleFormSubmit}>Add User</button>
             </div>
-            <UserDashboard setUpdateData={setUpdateData} updateData={updateData} data={data} setformData = {setformData} setData={setData} handleDelete={handleDelete} formData={formData} handleFormSubmit={handleFormSubmit}/>
+            <UserDashboard handleUpdate={handleUpdate} setUpdateData={setUpdateData} updateData={updateData} data={data} setformData = {setformData} setData={setData} handleDelete={handleDelete} formData={formData} handleFormSubmit={handleFormSubmit}/>
     </div>
 
     )
