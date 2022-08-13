@@ -32,7 +32,7 @@ const AddUser = () => {
     return (
         <div className='container'>
             <div className='row'>
-                <div className='col-md-7'>
+                <div className='col-md-12'>
                     <h1 id='header'>Add User Form</h1>
                 </div>
                     <div className="mb-3">
@@ -55,7 +55,7 @@ const AddUser = () => {
                         <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                         <input type="password" className="form-control"  value={formData.password} onChange={(e) => setformData({...formData, password:e.target.value})}></input>
                     </div>
-                    <button type="submit" className="btn btn-success" onClick={handleFormSubmit}>Add User</button>
+                    <button type="submit" className="btn btn-dark" onClick={handleFormSubmit}>Add User</button>
             </div>
     </div>
 
