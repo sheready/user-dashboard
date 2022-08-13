@@ -60,9 +60,9 @@ const AddUser = () => {
                 .delete('http://localhost:4000/posts/' + id)
                 .then((res) => alert('delete a success'));
             getUser();
-
-
         };
+
+      
 
     return (
         <div className='container'>
@@ -92,7 +92,7 @@ const AddUser = () => {
                     </div>
                     <button type="submit" className="btn btn-dark" onClick={handleFormSubmit}>Add User</button>
             </div>
-            <UserDashboard data={data} setformData = {setformData} setData={setData} handleDelete={handleDelete} formData={formData} handleFormSubmit={handleFormSubmit}/>
+            <UserDashboard setUpdateData={setUpdateData} updateData={updateData} data={data} setformData = {setformData} setData={setData} handleDelete={handleDelete} formData={formData} handleFormSubmit={handleFormSubmit}/>
     </div>
 
     )

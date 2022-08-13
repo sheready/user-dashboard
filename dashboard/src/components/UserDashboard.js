@@ -1,6 +1,6 @@
 import React from 'react';
 
-const UserDashboard = ({data, setData, setformData, formData, handleFormSubmit, handleDelete}) => {
+const UserDashboard = ({data, updateData, handleDelete, setUpdateData}) => {
 
 
     return (
@@ -26,7 +26,14 @@ const UserDashboard = ({data, setData, setformData, formData, handleFormSubmit, 
                                 <td>{user.mobile}</td>
                                 <td>{user.zipcode}</td>
                                 <td style={{display:"flex",justifyContent:"space-between"}}>
-                                    <button className="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+                                    <button className="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => setUpdateData({
+                                        name:user.name,
+                                        email:user.email,
+                                        mobile:user.mobile,
+                                        zipcode:user.zipcode,
+                                        password:user.password,
+                                        
+                                        })}>Edit</button>
                                     <button className="btn btn-danger" onClick={() => handleDelete(user.id)}>Delete</button>
 
                                 </td>
@@ -48,25 +55,25 @@ const UserDashboard = ({data, setData, setformData, formData, handleFormSubmit, 
                     
                     <div className="mb-3">
                         <label htmlFor="form" className="form-label">Full names</label>
-                            <input type="text" className="form-control"  value={formData.name} onChange={(e) => setformData({...formData, name:e.target.value})}></input>
+                            <input type="text" className="form-control"  value={updateData.name} onChange={(e) => setUpdateData({...updateData, name:e.target.value})}></input>
                         </div>
                         <div className="mb-3">
                             <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-                            <input type="email" className="form-control"  value={formData.email} onChange={(e) => setformData({...formData, email:e.target.value})}></input>
+                            <input type="email" className="form-control"  value={updateData.email} onChange={(e) => setUpdateData({...updateData, email:e.target.value})}></input>
                         </div>
                         <div className="mb-3">
                             <label htmlFor="exampleInputPassword1" className="form-label">Mobile number</label>
-                            <input type="text" className="form-control"  value={formData.mobile} onChange={(e) => setformData({...formData, mobile:e.target.value})}></input>
+                            <input type="text" className="form-control"  value={updateData.mobile} onChange={(e) => setUpdateData({...updateData, mobile:e.target.value})}></input>
                         </div>
                         <div className="mb-3">
                             <label htmlFor="exampleInputPassword1" className="form-label">Zip Code</label>
-                            <input type="text" className="form-control"  value={formData.zipcode} onChange={(e) => setformData({...formData, zipcode:e.target.value})}></input>
+                            <input type="text" className="form-control"  value={updateData.zipcode} onChange={(e) => setUpdateData({...updateData, zipcode:e.target.value})}></input>
                         </div>
                         <div className="mb-3">
                             <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-                            <input type="password" className="form-control"  value={formData.password} onChange={(e) => setformData({...formData, password:e.target.value})}></input>
+                            <input type="password" className="form-control"  value={updateData.password} onChange={(e) => setUpdateData({...updateData, password:e.target.value})}></input>
                         </div>
-                        <button type="submit" className="btn btn-dark" onClick={handleFormSubmit}>Edit User</button>
+                        <button type="submit" className="btn btn-dark" onClick={handleUpdate}>Edit User</button>
 
                     </div>
                     <div className="modal-footer">
