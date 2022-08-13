@@ -1,5 +1,6 @@
 import axios from 'axios';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import UserDashboard from './UserDashboard';
 import './AddUser.css';
 
 const AddUser = () => {
@@ -18,8 +19,6 @@ const AddUser = () => {
         
     };
 
-
-
     const [formData, setformData] = useState({
         name:'',
         mobile:'',
@@ -29,6 +28,14 @@ const AddUser = () => {
 
     })
 
+    const [updateData, setUpdateData] = useState({
+        name:'',
+        mobile:'',
+        email:'',
+        zipcode:'',
+        password:'',
+
+    })
 
     const handleFormSubmit = async (e) => {
         let response = await axios.post('http://localhost:4000/posts', formData);
@@ -85,7 +92,7 @@ const AddUser = () => {
                     </div>
                     <button type="submit" className="btn btn-dark" onClick={handleFormSubmit}>Add User</button>
             </div>
-            <UserDashboard data={data} setData={setData} />
+            <UserDashboard data={data} setformData = {setformData} setData={setData} handleDelete={handleDelete} formData={formData} handleFormSubmit={handleFormSubmit}/>
     </div>
 
     )
