@@ -1,18 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from 'react';
 
-const UserDashboard = () => {
-    const [data,setData] = useState([{}]);
+const UserDashboard = ({data, setData}) => {
 
-    useEffect(() => {
-        getUser();
-        console.log(data);
-    }, []);
-
-    const getUser = async() => {
-        await axios.get('http://localhost:4000/posts').then(res => setData(res.data));
-        
-    };
 
     return (
         <div>
@@ -25,18 +15,24 @@ const UserDashboard = () => {
                     <th scope="col">Email Address</th>
                     <th scope="col">Mobile Number</th>
                     <th scope="col">Zip Code</th>
+                    <th scope="col">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        data && data.map(user => {
+                        data && data.map((user) => (
                             <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
+                                <th scope="row">{user.name}</th>
+                                <td>{user.email}</td>
+                                <td>{user.mobile}</td>
+                                <td>{user.zipcode}</td>
+                                <td style={{display:"flex",justifyContent:"space-between"}}>
+                                    <button className="btn btn-info">Edit</button>
+                                    <button className="btn btn-danger" onClick={() => handleDelete(user.id)}>Delete</button>
+
+                                </td>
                             </tr>
-                        })
+                        ))
                     }
 
                 </tbody>

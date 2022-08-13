@@ -3,6 +3,23 @@ import React, {useState} from 'react';
 import './AddUser.css';
 
 const AddUser = () => {
+
+    const [data,setData] = useState([{}]);
+
+    useEffect(() => {
+        getUser();
+        console.log(data);
+    }, []);
+
+    const getUser = async() => {
+        await axios
+            .get('http://localhost:4000/posts')
+            .then((res) => setData(res.data));
+        
+    };
+
+
+
     const [formData, setformData] = useState({
         name:'',
         mobile:'',
@@ -11,7 +28,8 @@ const AddUser = () => {
         password:'',
 
     })
-    
+
+
     const handleFormSubmit = async (e) => {
         let response = await axios.post('http://localhost:4000/posts', formData);
 
@@ -29,6 +47,16 @@ const AddUser = () => {
             password:'',
         });
     };
+
+        const handleDelete = async(id) => {
+            await axios
+                .delete('http://localhost:4000/posts/' + id)
+                .then((res) => alert('delete a success'));
+            getUser();
+
+
+        };
+
     return (
         <div className='container'>
             <div className='row'>
@@ -57,6 +85,7 @@ const AddUser = () => {
                     </div>
                     <button type="submit" className="btn btn-dark" onClick={handleFormSubmit}>Add User</button>
             </div>
+            <UserDashboard data={data} setData={setData} />
     </div>
 
     )
